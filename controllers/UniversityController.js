@@ -1,8 +1,8 @@
-const Employee = require('../modells/Employee')
+const University = require('../modells/University')
 
 //show the list of Empoyees
 const index = (req, res, next) =>{
-    Employee.find()
+    University.find()
     .then(response =>{
         res.json({
             response
@@ -17,8 +17,8 @@ const index = (req, res, next) =>{
 
 //Show single employee
 const show = (req, res, next) =>{
-    let EmployeeID = req.body.employeeID
-    Employee.findById(employeeID)
+    let UniversityID = req.body.universityID
+    Employee.findById(universityID)
     .then(response => {
         res.json({
             response
@@ -34,12 +34,8 @@ const show = (req, res, next) =>{
 
 //add new employy
 const store = (req, res, next) =>{
-    let employee = new Employee({
-        name: req.body.name,
-        designation: req.body.designation,
-        email: req.body.email,
-        phone: req.body.phone,
-        age: req.body.age
+    let university = new University({
+        university: req.body.university,
     })
 
     if(req.files){
@@ -48,10 +44,10 @@ const store = (req, res, next) =>{
             path = path + files.path + ','
         })
         path = path.substring(0, path.lastIndexOf(","))
-        employee.avatar = path
+//        employee.avatar = path
     }
 
-    employee.save()
+    university.save()
     .then(response =>{
         res.json({
             message:'Employee Added Successfully'
@@ -66,17 +62,13 @@ const store = (req, res, next) =>{
 
 //update an employee
 const update = (req, res, next) =>{
-    let employeeID = req.body.employeeID
+    let universityID = req.body.universityID
 
     let updateData = {
-        name: req.body.name,
-        designation: req.body.designation,
-        email: req.body.email,
-        phone: req.body.phone,
-        age: req.body.age
+        university: req.body.university,
     }
 
-    Employee.findByIdAndUpdate(employeeID, {$set: updateData})
+    University.findByIdAndUpdate(universityID, {$set: updateData})
     .then(() => {
         res.json({
             message: 'Employee updated successfully'
@@ -91,8 +83,8 @@ const update = (req, res, next) =>{
 
 //delete an employee
 const destroy = (req, res, next) =>{
-    let employeeID = req.body.employeeID
-    Employee.findOneAndRemove(employeeID)
+    let universityID = req.body.employeeID
+    University.findOneAndRemove(employeeID)
     .then(() =>{
         res.json({
             message: 'Employee deleted successfuly'

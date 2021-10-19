@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
-const EmployeeRoute = require('./routes/employee')
+const UniversityRoute = require('./routes/univesity')
 const AuthRoute = require('./routes/auth')
 
 mongoose.connect('mongodb://localhost:27017/subjects', {useNewUrlParser: true, useUnifiedTopology : true})
@@ -30,6 +30,6 @@ app.listen(port, ()=>{
     console.log('We are live on ' + port)
 })
 
-app.use('/api/employee', EmployeeRoute)
+app.use('/api/university', UniversityRoute)
 app.use('/api', AuthRoute)
 //some word
