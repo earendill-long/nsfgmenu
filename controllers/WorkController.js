@@ -1,8 +1,8 @@
-const University = require('../modells/University')
+const Work = require('../modells/Work')
 
-//show the list of universities
+//show the list of work
 const index = (req, res, next) =>{
-    University.find()
+    Work.find()
     .then(response =>{
         res.json({
             response
@@ -15,10 +15,10 @@ const index = (req, res, next) =>{
     })
 }
 
-//Show single employee
+//Show single work
 const show = (req, res, next) =>{
-    let UniversityID = req.body.universityID
-    University.findById(universityID)
+    let WorkID = req.body.workID
+    Subject.findById(workID)
     .then(response => {
         res.json({
             response
@@ -32,15 +32,18 @@ const show = (req, res, next) =>{
     })
 }
 
-//add new University
+//add new work
 const store = (req, res, next) =>{
-    let university = new University({
-        university: req.body.university,
+    let work = new Work({
+        subjectName: req.body.subjectName,
+        workName: req.body.workName,
+        workType: req.body.workType,
+        discriptions: req.body.discriptions
     })
-    university.save()
+    work.save()
     .then(response =>{
         res.json({
-            message:'University Added Successfully'
+            message:'subject Added Successfully'
         })
     })
     .catch(error =>{
@@ -50,18 +53,18 @@ const store = (req, res, next) =>{
     })
 }
 
-//update an employee
+//update an work
 const update = (req, res, next) =>{
-    let universityID = req.body.universityID
+    let workID = req.body.workID
 
     let updateData = {
-        university: req.body.university,
+        work: req.body.work,
     }
 
-    University.findByIdAndUpdate(universityID, {$set: updateData})
+    Work.findByIdAndUpdate(workID, {$set: updateData})
     .then(() => {
         res.json({
-            message: 'Employee updated successfully'
+            message: 'work updated successfully'
         })
     })
     .catch(error =>{
@@ -71,13 +74,13 @@ const update = (req, res, next) =>{
     })
 }
 
-//delete an employee
+//delete an work
 const destroy = (req, res, next) =>{
-    let universityID = req.body.universityID
-    University.findOneAndRemove(universityID)
+    let workID = req.body.workID
+    Work.findOneAndRemove(workID)
     .then(() =>{
         res.json({
-            message: 'Employee deleted successfuly'
+            message: 'subject deleted successfuly'
         })
     })
     .catch(error =>{

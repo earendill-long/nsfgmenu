@@ -1,8 +1,8 @@
-const University = require('../modells/University')
+const Part = require('../modells/Part')
 
-//show the list of universities
+//show the list of part
 const index = (req, res, next) =>{
-    University.find()
+    Part.find()
     .then(response =>{
         res.json({
             response
@@ -15,10 +15,10 @@ const index = (req, res, next) =>{
     })
 }
 
-//Show single employee
+//Show single part
 const show = (req, res, next) =>{
-    let UniversityID = req.body.universityID
-    University.findById(universityID)
+    let PartkID = req.body.partID
+    Part.findById(partID)
     .then(response => {
         res.json({
             response
@@ -32,15 +32,19 @@ const show = (req, res, next) =>{
     })
 }
 
-//add new University
+//add new part
 const store = (req, res, next) =>{
-    let university = new University({
-        university: req.body.university,
+    let part = new Part({
+        workName: req.body.workName,
+        partName: req.body.partName,
+        isAssambly: req.body.isAssambly,
+        path: req.body.path,
+        tag1: req.body.tag1
     })
-    university.save()
+    part.save()
     .then(response =>{
         res.json({
-            message:'University Added Successfully'
+            message:'subject Added Successfully'
         })
     })
     .catch(error =>{
@@ -50,18 +54,18 @@ const store = (req, res, next) =>{
     })
 }
 
-//update an employee
+//update an part
 const update = (req, res, next) =>{
-    let universityID = req.body.universityID
+    let partID = req.body.partID
 
     let updateData = {
-        university: req.body.university,
+        part: req.body.part,
     }
 
-    University.findByIdAndUpdate(universityID, {$set: updateData})
+    Part.findByIdAndUpdate(partID, {$set: updateData})
     .then(() => {
         res.json({
-            message: 'Employee updated successfully'
+            message: 'work updated successfully'
         })
     })
     .catch(error =>{
@@ -71,13 +75,13 @@ const update = (req, res, next) =>{
     })
 }
 
-//delete an employee
+//delete an part
 const destroy = (req, res, next) =>{
-    let universityID = req.body.universityID
-    University.findOneAndRemove(universityID)
+    let partID = req.body.partID
+    Part.findOneAndRemove(partID)
     .then(() =>{
         res.json({
-            message: 'Employee deleted successfuly'
+            message: 'subject deleted successfuly'
         })
     })
     .catch(error =>{

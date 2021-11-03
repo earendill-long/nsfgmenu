@@ -3,7 +3,8 @@ const Schema = mongoose.Schema
 
 const universityShema = new Schema({
     university:{
-        type: String
+        type: String,
+        required: [true, 'Укажите название учебногшо заведения']
     } 
 }, {timestamps: true})
 
