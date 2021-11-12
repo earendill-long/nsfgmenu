@@ -4,27 +4,27 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
     name:{
         type: String,
-        required : [true,'Укажите имя']
+        required : [true,'...']
     },
     familia:{
         type: String,
-        required: [true, 'Укажите фамилию']
+        required: [true, '...']
     },
     university:{
         type: String,
-        required : [true, 'Укажите учебное заведение']
+        required : [true, '...']
     },
     Class:{
         type: String,
-        required: [true, 'Укажите группу']
+        required: [true, '...']
     },
     email:{
         type: String,
-        required: [true, 'Укажите почтовый ящик']
+        required: [true, '...']
     },
     phone:{
         type: String,
-        required: [true, 'Укажите телефон']
+        required: [true, '...']
     },
        
     avatar:{
@@ -32,7 +32,7 @@ const userSchema = new Schema({
     },
     password:{
         type: String,
-        required: [true, 'Укажите пароль']
+        required: [true, '...']
     }
 }, {timestamps: true})
 

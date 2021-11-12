@@ -40,12 +40,12 @@ const store = (req, res, next) =>{
     })
     if(subject.university == null){
         res.json({
-            message:'Выберете учебное заведение'
+            message:'...'
         })
     }
     if(subject.subjectname == null){
         res.json({
-            message:'Предмет должен иметь название'
+            message:'...'
         })
     }
     else{

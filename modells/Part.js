@@ -2,17 +2,19 @@ const mongoose = require('mongoose')
 const Shema = mongoose.Schema
 
 const partShema = new Shema({
-    workName:{
+    summary:{
         type: String
     },
     partName:{
-        type: String
+        type: String,
+        required: [true, 'Part name ...']
     },
     isAssembly:{
         type: Boolean
     },
     path:{
-        type: String
+        type: String,
+        required: true
     },
     tag1:{
         type: String

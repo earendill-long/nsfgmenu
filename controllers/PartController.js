@@ -35,7 +35,6 @@ const show = (req, res, next) =>{
 //add new part
 const store = (req, res, next) =>{
     let part = new Part({
-        workName: req.body.workName,
         partName: req.body.partName,
         isAssambly: req.body.isAssambly,
         path: req.body.path,
